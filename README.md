@@ -7,8 +7,9 @@
 * To use the calculator go to the following website: https://nihoel.github.io/Anno1404Calculator/
 * To use it offline, download, unzip and open index.html with a browser: https://github.com/NiHoel/Anno1404Calculator/archive/v1.0.zip
 
-An application to read population and factory count from the game and enter it into the calculator. 
-* Download link of UXEnhancer: https://github.com/NiHoel/Anno1404UXEnhancer 
-* [YouTube-Tutorial](https://youtu.be/k4WmgEIkp4s)
+![Extract population count](PopulationExtraction.jpg)
+An application to read population and factory count from the game and enter it into the calculator (only works from citizens onwards): https://github.com/NiHoel/Anno1404UXEnhancer 
+
+
 * License: MIT
 * Author: Nico Höllerich

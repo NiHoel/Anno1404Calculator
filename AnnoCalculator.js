@@ -1,4 +1,4 @@
-let versionCalculator = "v1.0";
+let versionCalculator = "v1.1";
 let ACCURACY = 0.01;
 let EPSILON = 0.0000001;
 let ALL_ISLANDS = "All Islands";
