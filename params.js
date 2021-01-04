@@ -1875,7 +1875,11 @@ params=
 },
 {
 "guid": 50012,
-"tpmin": 0.0044
+"tpmin": 0.0044,
+"unlockCondition": {
+"amount": 60,
+"populationLevel": 51901
+}
 }
 ],
 "residence": 33010
@@ -1950,7 +1954,11 @@ params=
 },
 {
 "guid": 50013,
-"tpmin": 0.0024
+"tpmin": 0.0024,
+"unlockCondition": {
+"amount": 510,
+"populationLevel": 51903
+}
 },
 {
 "guid": 50017,
@@ -1958,15 +1966,27 @@ params=
 },
 {
 "guid": 50018,
-"tpmin": 0.0028
+"tpmin": 0.0028,
+"unlockCondition": {
+"amount": 690,
+"populationLevel": 51903
+}
 },
 {
 "guid": 50022,
-"tpmin": 0.0016
+"tpmin": 0.0016,
+"unlockCondition": {
+"amount": 940,
+"populationLevel": 51903
+}
 },
 {
 "guid": 50025,
-"tpmin": 0.0008
+"tpmin": 0.0008,
+"unlockCondition": {
+"amount": 3000,
+"populationLevel": 51904
+}
 }
 ],
 "residence": 33030,
@@ -2014,7 +2034,11 @@ params=
 },
 {
 "guid": 50014,
-"tpmin": 0.002
+"tpmin": 0.002,
+"unlockCondition": {
+"amount": 1500,
+"populationLevel": 51904
+}
 },
 {
 "guid": 50017,
@@ -2026,11 +2050,19 @@ params=
 },
 {
 "guid": 50019,
-"tpmin": 0.0016
+"tpmin": 0.0016,
+"unlockCondition": {
+"amount": 950,
+"populationLevel": 51904
+}
 },
 {
 "guid": 50020,
-"tpmin": 0.00142
+"tpmin": 0.00142,
+"unlockCondition": {
+"amount": 4000,
+"populationLevel": 51904
+}
 },
 {
 "guid": 50022,
@@ -2038,15 +2070,19 @@ params=
 },
 {
 "guid": 50023,
-"tpmin": 0.00117
-},
-{
-"guid": 50027,
-"tpmin": 0.00058
+"tpmin": 0.00117,
+"unlockCondition": {
+"amount": 2200,
+"populationLevel": 51904
+}
 },
 {
 "guid": 50025,
-"tpmin": 0.0006
+"tpmin": 0.0006,
+"unlockCondition": {
+"amount": 3000,
+"populationLevel": 51904
+}
 }
 ],
 "residence": 33040,
@@ -2074,11 +2110,19 @@ params=
 },
 {
 "guid": 50015,
-"tpmin": 0.00344
+"tpmin": 0.00344,
+"unlockCondition": {
+"amount": 145,
+"populationLevel": 51909
+}
 },
 {
 "guid": 50024,
-"tpmin": 0.00165
+"tpmin": 0.00165,
+"unlockCondition": {
+"amount": 295,
+"populationLevel": 51909
+}
 }
 ],
 "residence": 33055
@@ -2105,7 +2149,11 @@ params=
 },
 {
 "guid": 50011,
-"tpmin": 0.00163
+"tpmin": 0.00163,
+"unlockCondition": {
+"amount": 4360,
+"populationLevel": 51910
+}
 },
 {
 "guid": 50015,
@@ -2117,11 +2165,19 @@ params=
 },
 {
 "guid": 50027,
-"tpmin": 0.0008
+"tpmin": 0.0008,
+"unlockCondition": {
+"amount": 2600,
+"populationLevel": 51910
+}
 },
 {
 "guid": 50026,
-"tpmin": 0.00133
+"tpmin": 0.00133,
+"unlockCondition": {
+"amount": 1040,
+"populationLevel": 51910
+}
 },
 {
 "guid": 50024,
@@ -2157,23 +2213,23 @@ params=
 50012,
 50017,
 50007,
-50022,
 50010,
 50013,
 50018,
+50022,
 50025,
+50009,
+50019,
 50014,
 50023,
-50019,
-50009,
-50015,
+50020,
 50021,
+50015,
 50024,
 50026,
 50016,
-50020,
-50011,
-50027
+50027,
+50011
 ]
 },
 {
@@ -2228,11 +2284,11 @@ params=
 },
 "name": "Raw Materials",
 "products": [
+50031,
 50029,
 50030,
 50036,
 50035,
-50031,
 50049,
 50053,
 50044,
@@ -2271,8 +2327,8 @@ params=
 50043,
 50048,
 50037,
-50045,
 50050,
+50045,
 50057,
 50058,
 50056,

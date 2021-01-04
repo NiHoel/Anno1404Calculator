@@ -431,12 +431,10 @@ Siehe folgenden Link für weitere Informationen: `,
         german: "Eine neue Version des Warenrechners ist verfügbar. Klicke auf den Downloadbutton.",
         korean: "새로운 Anno 1404 계산기 버전이 제공됩니다. 다운로드 버튼을 클릭하십시오."
     },
-    /*
     newFeature: {
-        english: "NEU: Zusatzwarenverwaltung, Zeitungseffekt und Handelsrouten. Alles drei muss erst über die Einstellungen aktiviert werden. Über das neue Fabrikkonfigurationsmenü können Routen erstellt, Items ausgerüstet und Zusatzwaren angewendet werden. Siehe die Hilfe für weitere Informationen.",
-        german: "NEW: Extra goods management, newspaper effects and trade routes. All three features must be activated in the settings. From the new factory configuration dialog one can create routes, equip items, and apply extra goods. See the help for more information.",
+        english: "Freischaltbedingungen der Bedürfnisse berücksichtigt.",
+        german: "Unlock conditions of needs considered.",
     },
-    */
     helpContent: {
         german:
             `<h5>Verwendung und Aufbau</h5>
@@ -629,6 +627,13 @@ options = {
             "english": "Highlight missing buildings",
             "german": "Fehlende Gebäude hervorheben",
             "korean": "부족한 건물 강조"
+        }
+    },
+    "needUnlockConditions": {
+        "name": "Consider unlock conditions for needs",
+        "locaText": {
+            "english": "Consider unlock conditions for needs",
+            "german": "Freischaltbedingungen der Bedürfnisse berücksichtigen",
         }
     },
     /*

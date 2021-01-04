@@ -1,4 +1,4 @@
-let versionCalculator = "v1.1";
+let versionCalculator = "v1.2";
 let ACCURACY = 0.01;
 let EPSILON = 0.0000001;
 let ALL_ISLANDS = "All Islands";
@@ -325,11 +325,19 @@ class Island {
             this.residenceBuildings.push(b);
         }
 
+        for (var b of this.residenceBuildings)
+            if (b.upgradedBuilding)
+                b.upgradedBuilding = assetsMap.get(parseInt(b.upgradedBuilding));
+
         for (let level of params.populationLevels) {
 
             let l = new PopulationLevel(level, assetsMap);
             assetsMap.set(l.guid, l);
             this.populationLevels.push(l);
+        }
+
+        for (let l of this.populationLevels) {
+            l.initBans(assetsMap);
 
             if (localStorage) {
                 {
@@ -401,6 +409,8 @@ class Island {
 
             }
         }
+
+
 
         for (var category of params.productFilter) {
             let c = new ProductCategory(category, assetsMap);
@@ -1150,16 +1160,55 @@ class PopulationNeed extends Need {
             val = parseFloat(val);
             if (val <= 0)
                 this.percentBoost(1);
-        })
+        });
         this.boost = ko.computed(() => parseInt(this.percentBoost()) / 100);
         this.boost.subscribe(() => this.updateAmount(this.residents));
 
         this.checked = ko.observable(true);
+        this.optionalAmount = ko.observable(0);
+
+    }
+
+    initBans(level, assetsMap) {
+        if (this.unlockCondition) {
+            var config = this.unlockCondition;
+            this.locked = ko.computed(() => {
+                if (!config || !view.settings.needUnlockConditions.checked())
+                    return false;
+
+                var getAmount = l => view.settings.existingBuildingsInput.checked()
+                    ? parseInt(l.existingBuildings()) * l.fullHouse
+                    : parseInt(l.amount());
+
+                if (config.populationLevel != level.guid) {
+                    var l = assetsMap.get(config.populationLevel);
+                    var amount = getAmount(l);
+                    return amount < config.amount;
+                }
+
+                var amount = getAmount(level);
+                if (amount >= config.amount)
+                    return false;
+
+                var residence = level.residence.upgradedBuilding;
+                while (residence) {
+                    var l = residence.populationLevel;
+                    var amount = getAmount(l);
+                    if (amount > 0)
+                        return false;
+
+                    residence = residence.upgradedBuilding;
+                }
+
+                return true;
+            });
+        }
+
         this.banned = ko.computed(() => {
             var checked = this.checked();
-            return !checked;
-        })
-        this.optionalAmount = ko.observable(0);
+            return !checked ||
+                this.locked && this.locked();
+        });
 
         this.banned.subscribe(banned => {
             if (banned)
@@ -1244,6 +1293,11 @@ class PopulationLevel extends NamedElement {
         this.needs = [];
         this.region = assetsMap.get(config.region);
 
+        this.propagatedAmount = ko.computed(() => {
+            var amount = view.settings.existingBuildingsInput.checked() ? parseInt(this.existingBuildings()) * config.fullHouse : parseInt(this.amount());
+            this.needs.forEach(n => n.updateAmount(amount));
+        });
+
         config.needs.forEach(n => {
             if (n.tpmin > 0 && assetsMap.get(n.guid))
                 this.needs.push(new PopulationNeed(n, assetsMap));
@@ -1252,25 +1306,24 @@ class PopulationLevel extends NamedElement {
         this.amount.subscribe(val => {
             if (val < 0)
                 this.amount(0);
-            else if (!view.settings.existingBuildingsInput.checked())
-                this.needs.forEach(n => n.updateAmount(parseInt(val)))
-        });
-        this.existingBuildings.subscribe(val => {
-            if (view.settings.existingBuildingsInput.checked())
-                this.needs.forEach(n => n.updateAmount(parseInt(val * config.fullHouse)))
         });
         view.settings.existingBuildingsInput.checked.subscribe(enabled => {
             if (enabled)
                 this.existingBuildings(Math.max(this.existingBuildings(),
                     Math.ceil(parseInt(this.amount()) / config.fullHouse)));
-            else
-                this.amount(Math.max(this.amount(), parseInt(this.existingBuildings()) / (config.fullHouse - 10)));
+            else if (!this.amount())
+                this.amount(parseInt(this.existingBuildings()) / config.fullHouse);
         });
 
         if (this.residence) {
             this.residence = assetsMap.get(this.residence);
             this.residence.populationLevel = this;
         }
+    }
+
+    initBans(assetsMap) {
+        for (var n of this.needs)
+            n.initBans(this, assetsMap);
     }
 
     incrementAmount() {
@@ -2436,6 +2489,11 @@ function init() {
         }
     }
 
+    if (!localStorage || !localStorage.getItem("versionCalculator")) {
+        view.settings.hideProductionBoost.checked(true);
+        view.settings.needUnlockConditions.checked(true);
+    }
+
     view.settings.languages = params.languages;
 
     view.settings.serverOptions = [];
@@ -2663,7 +2721,7 @@ function createFloatInput(init) {
     obs.subscribe(val => {
         var num = parseFloat(val);
 
-        if (typeof num == "number" && isFinite(num) && val != num)
+        if (typeof num == "number" && isFinite(num) && val !== num)
             obs(num);
         else if (typeof num != "number" || !isFinite(num))
             obs(init);
