@@ -437,7 +437,9 @@ Siehe folgenden Link für weitere Informationen: `,
     },
     helpContent: {
         german:
-            `<h5>Verwendung und Aufbau</h5>
+            `<p><b>Wichtiger Hinweis: Verwende die Web-Versionen der Warenrechner von 1800 und 1404 nicht im gleichen Browser. Das bringt die gespeicherten Daten durcheinander. Verwende stattdessen einen andern Browser oder lade den Rechner herunter.</b></p><br/>
+
+<h5>Verwendung und Aufbau</h5>
 <p>Trage die aktuellen oder angestrebten Einwohner pro Stufe in die oberste Reihe ein. Die Produktionsketten aktualisieren sich automatisch, sobald man die Eingabe verlässt. Es werden nur diejenigen Fabriken angezeigt, die benötigt werden. In den Einstellungen kann zwischen der Eingabe von <b>Einwohnerzahl und Häusern</b> umgeschaltet werden. Im Fall von Einwohnern geht der Rechner davon aus, dass sämtliche Häuser voll sind.</p><br/>
 <p>Der Buchstabe in eckigen Klammern vor dem Bevölkerungsnamen ist der <b>Hotkey</b> zum Fokussieren des Eingabefeldes. Die Anzahl dort kann ebenfalls durch Drücken der Pfeiltasten erhöht und verringert werden.</p><br/>
 <p>Danach folgen zwei große Abschnitte, die sich wiederum in Unterabschnitte unterteilen. Der erste gibt einen <b>Überblick über alle benötigten Gebäude</b>, sortiert nach dem produzierten Warentyp. Der zweite schlüsselt die einzelnen <b>Produktionsketten nach Bevölkerungsstufen</b> auf. Jeder der Abschnitte kann durch einen Klick auf die Überschrift zusammengeklappt werden. Durch das Abwählen des Kontrollkästchens wird das entsprechende <b>Bedürfnis gesperrt</b>.</p><br/>
@@ -498,7 +500,9 @@ Siehe folgenden Link für weitere Informationen: `,
 <span>Falls Sie auf Fehler oder Unannehmlichkeiten stoßen oder Verbesserungen vorschlagen möchten, erstellen Sie ein Issue auf GitHub (</span><a href="https://github.com/NiHoel/Anno1404Calculator/issues">https://github.com/NiHoel/Anno1404Calculator/issues</a><span>)</span>`,
 
         english:
-            `<h5>Usage and Structure</h5>
+            `<p><b>Important notice: Do not use the web version of the calculators for 1800 and 1404 in the same browser. This messes up with the save data. Use another browser or download the calculator instead.</b></p><br/>
+
+<h5>Usage and Structure</h5>
 <p>Enter the current or desired number of residents per level into the topmost row. The production chains will update automatically when one leaves the input field. Only the required factories are displayed. In the settings one can switch between <b>population and houses count</b>. In case of population count the calculator assumes that houses are full.</p><br/>
 <p>The letter in square brackets before the resident's name is the <b>hotkey</b> to focus the input field. There, one can use the arrow keys to inc-/decrement the number.</p><br/>
 <p>Afterwards two big sections follow that are subdivided into smaller sections. The first one gives an <b>overview of the required buildings</b> sorted by the type of good that is produced. The second one lists the <b>individual production chains for each population level</b>. Clicking the heading collapses each section. Deselecting the checkbox leads to <b>locking the need</b>.</p><br/>
